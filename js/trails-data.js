@@ -4,7 +4,7 @@
 const trailsData = [
   {
     "id": "chamoussillon",
-    "name": "La Chaume",
+    "name": "Chamoussillon",
     "region": "Villeneuve-d'Entraunes",
     "difficulty": "Advanced",
     "distance": 4.1,
@@ -13596,7 +13596,7 @@ const trailsData = [
   },
   {
     "id": "dignes-terres-noires",
-    "name": "Dignes Terres Noires",
+    "name": "Terres Noires",
     "region": "Digne-les-Bains",
     "difficulty": "Advanced",
     "distance": 1.4,
@@ -16871,7 +16871,7 @@ const trailsData = [
   {
     "id": "molini",
     "name": "Molini",
-    "region": "Sospel / Moulinet",
+    "region": "Molini di Triora",
     "difficulty": "Advanced",
     "distance": 5.1,
     "elevationGain": 15,
@@ -26339,7 +26339,7 @@ const trailsData = [
   {
     "id": "terres-rouges",
     "name": "Terres Rouges",
-    "region": "Peille",
+    "region": "Puget-Théniers",
     "difficulty": "Expert",
     "distance": 2.3,
     "elevationGain": 8,
@@ -30482,8 +30482,8 @@ const trailsData = [
   },
   {
     "id": "viroulet",
-    "name": "Viroulet",
-    "region": "Peille / Nice",
+    "name": "Mont Viroulet",
+    "region": "Valdeblore",
     "difficulty": "Advanced",
     "distance": 6.6,
     "elevationGain": 57,

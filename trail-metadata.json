@@ -2,7 +2,7 @@
   "trails": [
     {
       "id": "chamoussillon",
-      "name": "La Chaume",
+      "name": "Chamoussillon",
       "region": "Villeneuve-d'Entraunes",
       "difficulty": "Advanced",
       "stravaActivityId": "15174364686",
@@ -44,7 +44,7 @@
     },
     {
       "id": "dignes-terres-noires",
-      "name": "Dignes Terres Noires",
+      "name": "Terres Noires",
       "region": "Digne-les-Bains",
       "difficulty": "Advanced",
       "stravaActivityId": "15230248224",
@@ -59,7 +59,7 @@
     {
       "id": "molini",
       "name": "Molini",
-      "region": "Sospel / Moulinet",
+      "region": "Molini di Triora",
       "difficulty": "Advanced",
       "stravaActivityId": "18224672473",
       "stravaUrl": "https://www.strava.com/activities/18224672473",
@@ -87,7 +87,7 @@
     {
       "id": "terres-rouges",
       "name": "Terres Rouges",
-      "region": "Peille",
+      "region": "Puget-Théniers",
       "difficulty": "Expert",
       "stravaActivityId": "16590983414",
       "stravaUrl": "https://www.strava.com/activities/16590983414",
@@ -100,8 +100,8 @@
     },
     {
       "id": "viroulet",
-      "name": "Viroulet",
-      "region": "Peille / Nice",
+      "name": "Mont Viroulet",
+      "region": "Valdeblore",
       "difficulty": "Advanced",
       "stravaActivityId": "19060351458",
       "stravaUrl": "https://www.strava.com/activities/19060351458",
