@@ -219,7 +219,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const bounds = L.latLngBounds(trail.coordinates);
     // Padding: [top, right, bottom, left] - less zoom, more space for card on right
     map.flyToBounds(bounds, {
-      padding: [80, 700, 300, 80],  // Offset toward bottom-left
+      padding: [50, 900, 450, 50],  // Strong offset toward bottom-left
       duration: 0.9,
       maxZoom: 13  // Don't zoom in too close
     });
