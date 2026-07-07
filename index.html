@@ -68,7 +68,51 @@
         <!-- Trail Name -->
         <div class="drawer-header-content">
           <h2 id="drawer-title">Trail Name</h2>
+          <div class="drawer-subtitle-row">
+            <span id="drawer-region">Region</span>
+            <span>&bull;</span>
+            <span id="drawer-difficulty-badge" class="trail-badge">Difficulty</span>
+          </div>
         </div>
+
+        <!-- Hidden Stats (for JS compatibility) -->
+        <div class="drawer-stats-grid">
+          <div class="stat-item">
+            <span id="stat-dist" class="val">0 km</span>
+          </div>
+          <div class="stat-item">
+            <span id="stat-gain" class="val">0 m</span>
+          </div>
+          <div class="stat-item">
+            <span id="stat-loss" class="val">0 m</span>
+          </div>
+          <div class="stat-item">
+            <span id="stat-max" class="val">0 m</span>
+          </div>
+          <div class="stat-item">
+            <span id="stat-time" class="val">0m</span>
+          </div>
+        </div>
+
+        <!-- Hidden Elevation Section (for JS compatibility) -->
+        <div class="elevation-profile-section">
+          <div class="profile-tabs-header">
+            <div class="profile-tab-buttons" role="tablist">
+              <button id="tab-2d" class="tab-btn active" role="tab" aria-selected="true">2D Profile</button>
+              <button id="tab-3d" class="tab-btn" role="tab" aria-selected="false">3D Orbit</button>
+            </div>
+            <span id="elevation-live-data" class="elevation-live-data"></span>
+          </div>
+          <div class="chart-views-wrapper">
+            <div id="chart-container" class="chart-container tab-panel" role="tabpanel"></div>
+            <div id="canvas-container" class="chart-container tab-panel" role="tabpanel" style="display: none;">
+              <canvas id="profile-3d-canvas"></canvas>
+            </div>
+          </div>
+        </div>
+
+        <!-- Hidden Description (for JS compatibility) -->
+        <p id="drawer-desc" class="drawer-description"></p>
 
         <!-- AUTOPLAY YOUTUBE EMBED -->
         <div class="video-section">
