@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Eoin Thomas | Alpes-Maritimes MTB Trails</title>
+  <meta name="description" content="Explore Eoin Thomas's favourite mountain bike trails in the Alpes-Maritimes. Interactive map, elevation profiles, 3D orbit view, GPX downloads and ride videos.">
+  <meta name="keywords" content="Mountain Biking, Alpes-Maritimes, Chamoussillon, Terres Grises, Gordolasque, Terres Rouges, Phoenix, Sospel, Peille, MTB Trails, GPX, Strava, YouTube, Enduro">
+  <meta name="author" content="Eoin Thomas">
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin="">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+  <main id="app-container" role="main">
+    
+    <div id="map" aria-label="Interactive map of Alpes-Maritimes MTB trails"></div>
+
+    <!-- Floating Top-Left Brand + Trail Selector -->
+    <div id="floating-menu-container" class="glass-panel">
+      <div id="floating-header">
+        <div class="brand-logo-container">
+          <i class="fas fa-mountain"></i>
+        </div>
+        <div id="brand-text">
+          <span class="brand-name">Eoin Thomas</span>
+          <span class="brand-sub">Alpes-Maritimes MTB</span>
+        </div>
+        <div id="floating-social">
+          <a href="https://www.strava.com/athletes/6837889" target="_blank" rel="noopener noreferrer" class="social-pill strava" title="Eoin Thomas on Strava">
+            <i class="fab fa-strava"></i>
+          </a>
+          <a href="https://www.youtube.com/@eoinsmostlybikevideos" target="_blank" rel="noopener noreferrer" class="social-pill youtube" title="eoins mostly bike videos on YouTube">
+            <i class="fab fa-youtube"></i>
+          </a>
+        </div>
+      </div>
+
+      <button id="menu-toggle-btn" aria-expanded="false" aria-controls="floating-trail-menu">
+        <i class="fas fa-map-marked-alt"></i>
+        <span id="menu-label">Select a Trail</span>
+        <i class="fas fa-chevron-down" id="menu-chevron"></i>
+      </button>
+
+      <div id="floating-trail-menu" class="hidden" role="listbox" aria-label="Trail selection">
+        <!-- Populated by app.js -->
+      </div>
+    </div>
+
+    <!-- Trail Detail Card (Slides in from right) -->
+    <article id="details-drawer" class="glass-panel" aria-hidden="true" aria-label="Trail details">
+      
+      <button id="close-drawer-btn" class="close-btn" aria-label="Close trail details">
+        <i class="fas fa-times"></i>
+      </button>
+      
+      <div class="drawer-scroll-container">
+
+        <!-- AUTOPLAY YOUTUBE EMBED -->
+        <div class="video-section">
+          <div class="video-wrapper">
+            <iframe
+              id="trail-video-iframe"
+              src=""
+              title="Trail preview video"
+              frameborder="0"
+              allow="autoplay; encrypted-media; picture-in-picture"
+              allowfullscreen>
+            </iframe>
+          </div>
+          <a id="btn-pov" href="#" target="_blank" rel="noopener noreferrer" class="btn btn-pov">
+            <i class="fas fa-video"></i> Watch My POV Video
+          </a>
+        </div>
+
+        <!-- Trail Name & Meta -->
+        <div class="drawer-header-content">
+          <h2 id="drawer-title">Trail Name</h2>
+          <div class="drawer-subtitle-row">
+            <span id="drawer-region">Region</span>
+            <span>&bull;</span>
+            <span id="drawer-difficulty-badge" class="trail-badge">Difficulty</span>
+          </div>
+        </div>
+        
+        <!-- Stats Grid -->
+        <div class="drawer-stats-grid">
+          <div class="stat-item">
+            <i class="fas fa-route"></i>
+            <span class="label">Distance</span>
+            <span id="stat-dist" class="val">0 km</span>
+          </div>
+          <div class="stat-item">
+            <i class="fas fa-arrow-up"></i>
+            <span class="label">Ascent</span>
+            <span id="stat-gain" class="val">0 m</span>
+          </div>
+          <div class="stat-item">
+            <i class="fas fa-arrow-down"></i>
+            <span class="label">Descent</span>
+            <span id="stat-loss" class="val">0 m</span>
+          </div>
+          <div class="stat-item">
+            <i class="fas fa-mountain"></i>
+            <span class="label">Max Elev</span>
+            <span id="stat-max" class="val">0 m</span>
+          </div>
+          <div class="stat-item" style="grid-column: span 2">
+            <i class="fas fa-clock"></i>
+            <span class="label">Est. Duration</span>
+            <span id="stat-time" class="val">0m</span>
+          </div>
+        </div>
+        
+        <!-- Elevation Profile / 3D Orbit Tabs -->
+        <div class="elevation-profile-section">
+          <div class="profile-tabs-header">
+            <div class="profile-tab-buttons" role="tablist">
+              <button id="tab-2d" class="tab-btn active" role="tab" aria-selected="true">2D Profile</button>
+              <button id="tab-3d" class="tab-btn" role="tab" aria-selected="false">3D Orbit</button>
+            </div>
+            <span id="elevation-live-data" class="elevation-live-data"></span>
+          </div>
+          
+          <div class="chart-views-wrapper">
+            <div id="chart-container" class="chart-container tab-panel" role="tabpanel"></div>
+            <div id="canvas-container" class="chart-container tab-panel" role="tabpanel" style="display: none;">
+              <canvas id="profile-3d-canvas"></canvas>
+              <div class="canvas-hint"><i class="fas fa-rotate"></i> Drag to rotate</div>
+            </div>
+          </div>
+        </div>
+        
+        <!-- Description -->
+        <p id="drawer-desc" class="drawer-description"></p>
+        
+        <!-- Secondary Actions -->
+        <footer class="drawer-actions">
+          <div class="action-btn-row">
+            <a id="btn-gpx" href="#" download class="btn btn-secondary">
+              <i class="fas fa-download"></i> Download GPX
+            </a>
+            <a id="btn-strava" href="#" target="_blank" rel="noopener noreferrer" class="btn btn-strava">
+              <i class="fab fa-strava"></i> Strava Ride
+            </a>
+          </div>
+        </footer>
+
+      </div>
+    </article>
+
+  </main>
+
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
+  <script src="js/trails-data.js?v=1.1.0"></script>
+  <script src="js/app.js?v=1.1.0"></script>
+
+</body>
+</html>

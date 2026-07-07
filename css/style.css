@@ -1,0 +1,755 @@
+/* ═══════════════════════════════════════════════════════════
+   Alpes-Maritimes MTB Trails — Stylesheet
+   Full-screen map layout with floating menu & video card
+═══════════════════════════════════════════════════════════ */
+
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=Inter:wght@300;400;500;600&display=swap');
+
+/* ── Design Tokens ── */
+:root {
+  --bg-primary:        #080a0d;
+  --bg-secondary:      #0d1117;
+  --surface-glass:     rgba(10, 13, 18, 0.82);
+  --surface-glass-hover: rgba(18, 23, 32, 0.92);
+  --border-glass:      rgba(255, 255, 255, 0.08);
+  --border-accent:     rgba(16, 185, 129, 0.4);
+
+  --text-primary:   #f3f4f6;
+  --text-secondary: #9ca3af;
+  --text-muted:     #6b7280;
+
+  --diff-easy:         #10b981;
+  --diff-intermediate: #3b82f6;
+  --diff-advanced:     #ef4444;
+  --diff-expert:       #a855f7;
+
+  --color-primary:      #10b981;
+  --color-primary-glow: rgba(16, 185, 129, 0.25);
+  --color-strava:       #fc5200;
+  --color-youtube:      #ff0000;
+
+  --font-display: 'Outfit', sans-serif;
+  --font-body:    'Inter', sans-serif;
+
+  --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
+  --t-fast:   0.2s;
+  --t-normal: 0.3s;
+  --t-smooth: 0.5s var(--ease-out);
+
+  --shadow-glass: 0 8px 32px rgba(0,0,0,0.4);
+  --shadow-glow:  0 0 18px rgba(16,185,129,0.2);
+}
+
+/* ── Reset ── */
+*, *::before, *::after {
+  margin: 0; padding: 0;
+  box-sizing: border-box;
+  scrollbar-width: thin;
+  scrollbar-color: rgba(255,255,255,0.15) transparent;
+}
+
+::-webkit-scrollbar { width: 5px; }
+::-webkit-scrollbar-thumb { background: rgba(255,255,255,0.15); border-radius: 4px; }
+
+html, body {
+  width: 100%; height: 100%;
+  overflow: hidden;
+  font-family: var(--font-body);
+  color: var(--text-primary);
+  background: var(--bg-primary);
+  -webkit-font-smoothing: antialiased;
+}
+
+h1,h2,h3,h4,h5,h6 {
+  font-family: var(--font-display);
+  font-weight: 600;
+  letter-spacing: -0.01em;
+}
+
+/* ── App Shell ── */
+#app-container {
+  position: relative;
+  width: 100vw; height: 100vh;
+  overflow: hidden;
+}
+
+/* ── Map (full screen) ── */
+#map {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  background: #090c10;
+}
+
+/* ── Glassmorphism utility ── */
+.glass-panel {
+  background: var(--surface-glass);
+  backdrop-filter: blur(18px);
+  -webkit-backdrop-filter: blur(18px);
+  border: 1px solid var(--border-glass);
+  border-radius: 16px;
+  box-shadow: var(--shadow-glass);
+}
+
+/* ═══════════════════════════════════════
+   FLOATING MENU (top-left)
+═══════════════════════════════════════ */
+#floating-menu-container {
+  position: absolute;
+  top: 20px;
+  left: 20px;
+  z-index: 20;
+  width: 320px;
+  padding: 14px 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+#floating-header {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.brand-logo-container {
+  flex-shrink: 0;
+  width: 38px; height: 38px;
+  background: linear-gradient(135deg, var(--color-primary), #059669);
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 3px 8px rgba(16,185,129,0.3);
+}
+
+.brand-logo-container i {
+  font-size: 17px;
+  color: white;
+  transform: rotate(-15deg);
+  transition: transform var(--t-fast);
+}
+
+.brand-logo-container:hover i { transform: rotate(0deg) scale(1.1); }
+
+#brand-text {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  line-height: 1.2;
+}
+
+.brand-name {
+  font-family: var(--font-display);
+  font-size: 15px;
+  font-weight: 700;
+  background: linear-gradient(to right, #fff, #9ca3af);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.brand-sub {
+  font-size: 10px;
+  font-weight: 600;
+  color: var(--color-primary);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+}
+
+#floating-social {
+  display: flex;
+  gap: 6px;
+}
+
+.social-pill {
+  width: 32px; height: 32px;
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  font-size: 15px;
+  text-decoration: none;
+  transition: transform var(--t-fast), box-shadow var(--t-fast);
+}
+
+.social-pill.strava  { background: linear-gradient(135deg, #fc5200, #c94200); }
+.social-pill.youtube { background: linear-gradient(135deg, #ff0000, #c00000); }
+.social-pill:hover   { transform: translateY(-2px); box-shadow: 0 4px 12px rgba(0,0,0,0.3); }
+
+/* Trail Selector Button */
+#menu-toggle-btn {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 10px 14px;
+  background: rgba(16,185,129,0.1);
+  border: 1px solid var(--border-accent);
+  border-radius: 10px;
+  color: var(--color-primary);
+  font-family: var(--font-display);
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all var(--t-fast);
+  text-align: left;
+}
+
+#menu-toggle-btn:hover {
+  background: rgba(16,185,129,0.18);
+  border-color: rgba(16,185,129,0.6);
+  box-shadow: var(--shadow-glow);
+}
+
+#menu-toggle-btn i:first-child { font-size: 14px; }
+
+#menu-label { flex: 1; }
+
+#menu-chevron {
+  font-size: 11px;
+  transition: transform var(--t-normal);
+}
+
+#menu-toggle-btn[aria-expanded="true"] #menu-chevron {
+  transform: rotate(180deg);
+}
+
+/* Trail Dropdown List */
+#floating-trail-menu {
+  background: rgba(8,10,14,0.97);
+  border: 1px solid var(--border-glass);
+  border-radius: 12px;
+  overflow: hidden;
+  max-height: 400px;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+}
+
+#floating-trail-menu.hidden { display: none; }
+
+.menu-trail-item {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 12px 16px;
+  cursor: pointer;
+  border-bottom: 1px solid rgba(255,255,255,0.04);
+  transition: background var(--t-fast);
+  text-decoration: none;
+}
+
+.menu-trail-item:last-child { border-bottom: none; }
+
+.menu-trail-item:hover {
+  background: rgba(255,255,255,0.05);
+}
+
+.menu-trail-item.active {
+  background: rgba(16,185,129,0.08);
+}
+
+.menu-diff-dot {
+  width: 8px; height: 8px;
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+
+.menu-trail-info {
+  flex: 1;
+  min-width: 0;
+}
+
+.menu-trail-name {
+  font-family: var(--font-display);
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--text-primary);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.menu-trail-meta {
+  font-size: 10px;
+  color: var(--text-muted);
+  margin-top: 2px;
+}
+
+.menu-diff-badge {
+  font-size: 9px;
+  font-weight: 700;
+  text-transform: uppercase;
+  padding: 2px 6px;
+  border-radius: 4px;
+  flex-shrink: 0;
+}
+
+.menu-diff-badge.easy        { background: rgba(16,185,129,0.15); color: #34d399; }
+.menu-diff-badge.intermediate{ background: rgba(59,130,246,0.15);  color: #60a5fa; }
+.menu-diff-badge.advanced    { background: rgba(239,68,68,0.15);   color: #f87171; }
+.menu-diff-badge.expert      { background: rgba(168,85,247,0.15);  color: #c084fc; }
+
+/* ═══════════════════════════════════════
+   DETAIL CARD (right slide-in)
+═══════════════════════════════════════ */
+#details-drawer {
+  position: absolute;
+  top: 20px; right: 20px; bottom: 20px;
+  width: 420px;
+  z-index: 20;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  transform: translateX(calc(100% + 40px));
+  transition: transform var(--t-smooth);
+  pointer-events: none;
+}
+
+#details-drawer.open {
+  transform: translateX(0);
+  pointer-events: auto;
+}
+
+.drawer-scroll-container {
+  flex: 1;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Close button */
+.close-btn {
+  position: absolute;
+  top: 14px; right: 14px;
+  width: 30px; height: 30px;
+  border-radius: 50%;
+  background: rgba(8,10,13,0.7);
+  border: 1px solid rgba(255,255,255,0.1);
+  color: white;
+  font-size: 12px;
+  display: flex; align-items: center; justify-content: center;
+  cursor: pointer;
+  z-index: 10;
+  transition: all var(--t-fast);
+}
+
+.close-btn:hover {
+  background: rgba(239,68,68,0.85);
+  border-color: transparent;
+  transform: scale(1.1);
+}
+
+/* ── Video section ── */
+.video-section {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  padding: 16px 16px 0;
+}
+
+.video-wrapper {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  border-radius: 12px;
+  overflow: hidden;
+  background: #000;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.5);
+}
+
+.video-wrapper iframe {
+  position: absolute;
+  inset: 0;
+  width: 100%; height: 100%;
+  border: none;
+}
+
+/* POV Button — hero action */
+.btn-pov {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 13px 16px;
+  background: linear-gradient(135deg, #ff0000, #c00000);
+  color: white;
+  border-radius: 10px;
+  text-decoration: none;
+  font-family: var(--font-display);
+  font-size: 14px;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+  transition: all var(--t-fast);
+  box-shadow: 0 4px 15px rgba(255,0,0,0.25);
+}
+
+.btn-pov:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(255,0,0,0.4);
+  filter: brightness(1.1);
+}
+
+.btn-pov i { font-size: 16px; }
+
+/* ── Drawer Header ── */
+.drawer-header-content {
+  padding: 16px 20px 12px;
+  border-bottom: 1px solid var(--border-glass);
+}
+
+.drawer-header-content h2 {
+  font-size: 20px;
+  font-weight: 700;
+  color: white;
+  line-height: 1.3;
+  margin-bottom: 6px;
+}
+
+.drawer-subtitle-row {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 12px;
+  color: var(--text-secondary);
+}
+
+/* ── Stats Grid ── */
+.drawer-stats-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 8px;
+  padding: 14px 16px;
+  border-bottom: 1px solid var(--border-glass);
+}
+
+.stat-item {
+  background: rgba(255,255,255,0.02);
+  border: 1px solid rgba(255,255,255,0.04);
+  padding: 10px 8px;
+  border-radius: 10px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+.stat-item i {
+  font-size: 14px;
+  color: var(--color-primary);
+  margin-bottom: 4px;
+}
+
+.stat-item .label {
+  font-size: 9px;
+  color: var(--text-muted);
+  text-transform: uppercase;
+  font-weight: 500;
+  letter-spacing: 0.05em;
+  margin-bottom: 2px;
+}
+
+.stat-item .val {
+  font-size: 13px;
+  font-weight: 600;
+  color: white;
+  font-family: var(--font-display);
+}
+
+/* ── Elevation / 3D Tabs ── */
+.elevation-profile-section {
+  padding: 14px 16px;
+  border-bottom: 1px solid var(--border-glass);
+}
+
+.profile-tabs-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+.profile-tab-buttons {
+  display: flex;
+  background: rgba(255,255,255,0.04);
+  padding: 3px;
+  border-radius: 7px;
+  border: 1px solid var(--border-glass);
+}
+
+.tab-btn {
+  background: transparent;
+  border: none;
+  color: var(--text-secondary);
+  font-family: var(--font-body);
+  font-size: 11px;
+  font-weight: 600;
+  padding: 5px 12px;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: all var(--t-fast);
+}
+
+.tab-btn:hover { color: white; }
+
+.tab-btn.active {
+  background: rgba(16,185,129,0.15);
+  color: var(--color-primary);
+  border: 1px solid rgba(16,185,129,0.25);
+}
+
+.elevation-live-data {
+  font-size: 11px;
+  color: var(--color-primary);
+  font-family: var(--font-display);
+  font-weight: 500;
+  background: rgba(16,185,129,0.1);
+  padding: 2px 8px;
+  border-radius: 20px;
+  opacity: 0;
+  transition: opacity var(--t-fast);
+}
+
+.elevation-live-data.active { opacity: 1; }
+
+.chart-container {
+  width: 100%;
+  height: 110px;
+  position: relative;
+  background: rgba(255,255,255,0.01);
+  border-radius: 8px;
+  border: 1px dashed rgba(255,255,255,0.05);
+}
+
+.chart-svg { width: 100%; height: 100%; overflow: visible; }
+
+/* 3D Canvas */
+#canvas-container {
+  overflow: hidden;
+  background: radial-gradient(circle at center, rgba(16,185,129,0.05) 0%, rgba(8,10,13,0.5) 100%) !important;
+}
+
+#profile-3d-canvas { width: 100%; height: 100%; cursor: grab; }
+#profile-3d-canvas:active { cursor: grabbing; }
+
+.canvas-hint {
+  position: absolute;
+  bottom: 6px; right: 10px;
+  font-size: 10px;
+  color: var(--text-muted);
+  display: flex; align-items: center; gap: 4px;
+  pointer-events: none;
+  background: rgba(8,10,13,0.6);
+  padding: 2px 7px;
+  border-radius: 4px;
+}
+
+/* ── Description ── */
+.drawer-description {
+  padding: 14px 20px;
+  font-size: 13px;
+  line-height: 1.65;
+  color: var(--text-secondary);
+}
+
+/* ── Action Buttons ── */
+.drawer-actions {
+  padding: 14px 16px 16px;
+  background: rgba(8,10,13,0.8);
+  border-top: 1px solid var(--border-glass);
+  position: sticky;
+  bottom: 0;
+  z-index: 5;
+}
+
+.action-btn-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+}
+
+.btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 7px;
+  padding: 11px 12px;
+  border-radius: 9px;
+  text-decoration: none;
+  font-family: var(--font-body);
+  font-size: 12px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all var(--t-fast);
+  border: none;
+}
+
+.btn-secondary {
+  background: rgba(255,255,255,0.06);
+  border: 1px solid var(--border-glass);
+  color: white;
+}
+
+.btn-secondary:hover {
+  background: rgba(255,255,255,0.12);
+  border-color: rgba(255,255,255,0.15);
+}
+
+.btn-strava {
+  background: rgba(252,82,0,0.12);
+  border: 1px solid rgba(252,82,0,0.3);
+  color: #ff7530;
+}
+
+.btn-strava:hover {
+  background: var(--color-strava);
+  color: white;
+  border-color: transparent;
+}
+
+/* ── Trail Difficulty Badges ── */
+.trail-badge {
+  font-size: 9px;
+  font-weight: 700;
+  text-transform: uppercase;
+  padding: 3px 7px;
+  border-radius: 4px;
+  letter-spacing: 0.05em;
+}
+
+.trail-badge.easy        { background: rgba(16,185,129,0.15); color: #34d399; }
+.trail-badge.intermediate{ background: rgba(59,130,246,0.15);  color: #60a5fa; }
+.trail-badge.advanced    { background: rgba(239,68,68,0.15);   color: #f87171; }
+.trail-badge.expert      { background: rgba(168,85,247,0.15);  color: #c084fc; }
+
+/* ── Leaflet overrides ── */
+.leaflet-control-zoom {
+  border: 1px solid var(--border-glass) !important;
+  box-shadow: var(--shadow-glass) !important;
+  border-radius: 10px !important;
+  overflow: hidden;
+}
+
+.leaflet-control-zoom-in,
+.leaflet-control-zoom-out {
+  background: var(--surface-glass) !important;
+  color: var(--text-primary) !important;
+  border-bottom: 1px solid var(--border-glass) !important;
+  transition: background var(--t-fast) !important;
+  backdrop-filter: blur(12px) !important;
+}
+
+.leaflet-control-zoom-in:hover,
+.leaflet-control-zoom-out:hover {
+  background: var(--surface-glass-hover) !important;
+  color: var(--color-primary) !important;
+}
+
+.leaflet-control-layers {
+  background: var(--surface-glass) !important;
+  backdrop-filter: blur(14px) !important;
+  border: 1px solid var(--border-glass) !important;
+  box-shadow: var(--shadow-glass) !important;
+  border-radius: 12px !important;
+  color: var(--text-primary) !important;
+  font-family: var(--font-display) !important;
+  font-size: 12px !important;
+  padding: 6px !important;
+}
+
+.leaflet-control-layers-expanded {
+  padding: 10px 14px !important;
+  background: rgba(10,13,18,0.96) !important;
+  border: 1px solid var(--border-accent) !important;
+}
+
+.leaflet-control-layers-list label {
+  margin-bottom: 6px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  cursor: pointer;
+  color: var(--text-secondary);
+  transition: color var(--t-fast);
+}
+
+.leaflet-control-layers-list label:hover { color: white; }
+.leaflet-control-layers-selector { accent-color: var(--color-primary); cursor: pointer; }
+
+.custom-tooltip {
+  background: var(--bg-secondary) !important;
+  border: 1px solid var(--border-accent) !important;
+  color: var(--text-primary) !important;
+  font-family: var(--font-display) !important;
+  font-size: 12px !important;
+  font-weight: 600 !important;
+  padding: 5px 11px !important;
+  border-radius: 8px !important;
+  box-shadow: var(--shadow-glass) !important;
+}
+
+/* ── Map Markers ── */
+.custom-marker-icon { display: flex; align-items: center; justify-content: center; }
+
+.marker-pin {
+  width: 28px; height: 28px;
+  border-radius: 50% 50% 50% 0;
+  background: var(--color-primary);
+  position: absolute;
+  transform: rotate(-45deg);
+  left: 50%; top: 50%;
+  margin: -14px 0 0 -14px;
+  border: 2px solid white;
+  box-shadow: 0 3px 8px rgba(0,0,0,0.4);
+  transition: all var(--t-fast);
+}
+
+.marker-pin::after {
+  content: '';
+  width: 20px; height: 20px;
+  border-radius: 50%;
+  background: var(--bg-primary);
+  position: absolute;
+}
+
+.marker-icon-inner {
+  position: absolute;
+  z-index: 10;
+  font-size: 11px;
+  width: 20px; height: 20px;
+  display: flex; align-items: center; justify-content: center;
+}
+
+.custom-marker-icon.easy         .marker-pin { background: var(--diff-easy); }
+.custom-marker-icon.easy         .marker-icon-inner { color: var(--diff-easy); }
+.custom-marker-icon.intermediate .marker-pin { background: var(--diff-intermediate); }
+.custom-marker-icon.intermediate .marker-icon-inner { color: var(--diff-intermediate); }
+.custom-marker-icon.advanced     .marker-pin { background: var(--diff-advanced); }
+.custom-marker-icon.advanced     .marker-icon-inner { color: var(--diff-advanced); }
+.custom-marker-icon.expert       .marker-pin { background: var(--diff-expert); }
+.custom-marker-icon.expert       .marker-icon-inner { color: var(--diff-expert); }
+
+.custom-marker-icon.active .marker-pin {
+  transform: rotate(-45deg) scale(1.25);
+  box-shadow: 0 0 14px rgba(255,255,255,0.5);
+  border-color: #fff;
+}
+
+/* ── Responsive ── */
+@media (max-width: 768px) {
+  #floating-menu-container { width: calc(100vw - 40px); }
+
+  #details-drawer {
+    top: auto; bottom: 0;
+    right: 0; left: 0;
+    width: 100%;
+    border-radius: 20px 20px 0 0;
+    max-height: 80vh;
+    transform: translateY(100%);
+  }
+
+  #details-drawer.open { transform: translateY(0); }
+
+  .drawer-actions { position: sticky; bottom: 0; }
+}
