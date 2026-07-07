@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Page Not Found | Eoin Thomas MTB</title>
+  <script>
+    // GitHub Pages SPA redirect: send 404s back to the index
+    // Preserves the path so deep links still work after page load
+    const path = window.location.pathname;
+    const repo = '/PACA_rides';
+    if (path !== repo + '/' && path !== repo + '/index.html') {
+      sessionStorage.setItem('redirect', path);
+    }
+    window.location.replace(repo + '/');
+  </script>
+</head>
+<body>
+  <p>Redirecting…</p>
+</body>
+</html>
