@@ -14,10 +14,10 @@ document.addEventListener('DOMContentLoaded', () => {
 
   // ── Difficulty helpers ──────────────────────────────
   const DIFF_COLORS = {
-    Easy:         '#10b981',
+    Easy:         '#3b82f6',
     Intermediate: '#3b82f6',
-    Advanced:     '#ef4444',
-    Expert:       '#a855f7'
+    Advanced:     '#3b82f6',
+    Expert:       '#3b82f6'
   };
 
   function diffClass(d) {
@@ -25,7 +25,7 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   function diffColor(d) {
-    return DIFF_COLORS[d] || '#ffffff';
+    return DIFF_COLORS[d] || '#3b82f6';
   }
 
   // ── Map Init ────────────────────────────────────────
@@ -102,14 +102,14 @@ document.addEventListener('DOMContentLoaded', () => {
 
       const polyline = L.polyline(coords, {
         color,
-        weight: 3.5,
-        opacity: 0.7,
+        weight: 5,
+        opacity: 0.8,
         smoothFactor: 1.5
       });
 
       polyline.on('mouseover', () => {
         if (activeTrailId !== trail.id) {
-          polyline.setStyle({ weight: 5.5, opacity: 1 });
+          polyline.setStyle({ weight: 7, opacity: 1 });
           polyline.bindTooltip(trail.name, { className: 'custom-tooltip', sticky: true });
           polyline.openTooltip();
         }
@@ -117,7 +117,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
       polyline.on('mouseout', () => {
         if (activeTrailId !== trail.id) {
-          polyline.setStyle({ weight: 3.5, opacity: 0.7 });
+          polyline.setStyle({ weight: 5, opacity: 0.8 });
           polyline.closeTooltip();
           polyline.unbindTooltip();
         }
@@ -199,8 +199,8 @@ document.addEventListener('DOMContentLoaded', () => {
       const prevTrail = trailsData.find(t => t.id === activeTrailId);
       if (mapPolylines[activeTrailId]) {
         mapPolylines[activeTrailId].setStyle({
-          weight: 3.5,
-          opacity: 0.7,
+          weight: 5,
+          opacity: 0.8,
           color: diffColor(prevTrail.difficulty)
         });
       }
@@ -212,7 +212,7 @@ document.addEventListener('DOMContentLoaded', () => {
     activeTrailId = id;
 
     // Highlight polyline
-    mapPolylines[id].setStyle({ weight: 5.5, opacity: 1, color: diffColor(trail.difficulty) });
+    mapPolylines[id].setStyle({ weight: 7, opacity: 1, color: diffColor(trail.difficulty) });
     mapMarkers[id].setIcon(makeMarkerIcon(trail, true));
 
     // Fly to trail with offset toward bottom-left
@@ -252,7 +252,7 @@ document.addEventListener('DOMContentLoaded', () => {
     if (activeTrailId) {
       const trail = trailsData.find(t => t.id === activeTrailId);
       if (trail) {
-        mapPolylines[activeTrailId].setStyle({ weight: 3.5, opacity: 0.7 });
+        mapPolylines[activeTrailId].setStyle({ weight: 5, opacity: 0.8 });
         mapMarkers[activeTrailId].setIcon(makeMarkerIcon(trail, false));
       }
       activeTrailId = null;
