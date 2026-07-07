@@ -215,9 +215,14 @@ document.addEventListener('DOMContentLoaded', () => {
     mapPolylines[id].setStyle({ weight: 5.5, opacity: 1, color: diffColor(trail.difficulty) });
     mapMarkers[id].setIcon(makeMarkerIcon(trail, true));
 
-    // Fly to trail
+    // Fly to trail with offset toward bottom-left
     const bounds = L.latLngBounds(trail.coordinates);
-    map.flyToBounds(bounds, { padding: [60, 420], duration: 0.9 });
+    // Padding: [top, right, bottom, left] - less zoom, more space for card on right
+    map.flyToBounds(bounds, {
+      padding: [80, 700, 300, 80],  // Offset toward bottom-left
+      duration: 0.9,
+      maxZoom: 13  // Don't zoom in too close
+    });
 
     // Update active state in menu
     document.querySelectorAll('.menu-trail-item').forEach(el => {
