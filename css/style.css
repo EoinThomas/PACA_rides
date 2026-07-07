@@ -296,15 +296,16 @@ h1,h2,h3,h4,h5,h6 {
 ═══════════════════════════════════════ */
 #details-drawer {
   position: absolute;
-  top: 20px; right: 20px; bottom: 20px;
-  width: 420px;
+  top: 20px; right: 20px;
+  width: 550px;
   z-index: 20;
-  display: flex;
-  flex-direction: column;
-  overflow: hidden;
+  padding: 24px;
   transform: translateX(calc(100% + 40px));
   transition: transform var(--t-smooth);
   pointer-events: none;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
 }
 
 #details-drawer.open {
@@ -313,10 +314,9 @@ h1,h2,h3,h4,h5,h6 {
 }
 
 .drawer-scroll-container {
-  flex: 1;
-  overflow-y: auto;
   display: flex;
   flex-direction: column;
+  gap: 20px;
 }
 
 /* Close button */
@@ -341,12 +341,20 @@ h1,h2,h3,h4,h5,h6 {
   transform: scale(1.1);
 }
 
+/* ── Trail Title ── */
+.drawer-header-content h2 {
+  font-size: 28px;
+  font-weight: 700;
+  color: white;
+  line-height: 1.2;
+  margin: 0;
+}
+
 /* ── Video section ── */
 .video-section {
   display: flex;
   flex-direction: column;
-  gap: 10px;
-  padding: 16px 16px 0;
+  gap: 0;
 }
 
 .video-wrapper {
@@ -356,7 +364,7 @@ h1,h2,h3,h4,h5,h6 {
   border-radius: 12px;
   overflow: hidden;
   background: #000;
-  box-shadow: 0 4px 20px rgba(0,0,0,0.5);
+  box-shadow: 0 6px 24px rgba(0,0,0,0.6);
 }
 
 .video-wrapper iframe {
@@ -366,246 +374,81 @@ h1,h2,h3,h4,h5,h6 {
   border: none;
 }
 
-/* POV Button — hero action */
-.btn-pov {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 8px;
-  padding: 13px 16px;
-  background: linear-gradient(135deg, #ff0000, #c00000);
-  color: white;
-  border-radius: 10px;
-  text-decoration: none;
-  font-family: var(--font-display);
-  font-size: 14px;
-  font-weight: 700;
-  letter-spacing: 0.02em;
-  transition: all var(--t-fast);
-  box-shadow: 0 4px 15px rgba(255,0,0,0.25);
-}
-
-.btn-pov:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 6px 20px rgba(255,0,0,0.4);
-  filter: brightness(1.1);
-}
-
-.btn-pov i { font-size: 16px; }
-
-/* ── Drawer Header ── */
-.drawer-header-content {
-  padding: 16px 20px 12px;
-  border-bottom: 1px solid var(--border-glass);
-}
-
-.drawer-header-content h2 {
-  font-size: 20px;
-  font-weight: 700;
-  color: white;
-  line-height: 1.3;
-  margin-bottom: 6px;
-}
-
+/* Hide all the extra sections */
+.drawer-stats-grid,
+.elevation-profile-section,
+.drawer-description,
 .drawer-subtitle-row {
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  font-size: 12px;
-  color: var(--text-secondary);
-}
-
-/* ── Stats Grid ── */
-.drawer-stats-grid {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 8px;
-  padding: 14px 16px;
-  border-bottom: 1px solid var(--border-glass);
-}
-
-.stat-item {
-  background: rgba(255,255,255,0.02);
-  border: 1px solid rgba(255,255,255,0.04);
-  padding: 10px 8px;
-  border-radius: 10px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  text-align: center;
-}
-
-.stat-item i {
-  font-size: 14px;
-  color: var(--color-primary);
-  margin-bottom: 4px;
-}
-
-.stat-item .label {
-  font-size: 9px;
-  color: var(--text-muted);
-  text-transform: uppercase;
-  font-weight: 500;
-  letter-spacing: 0.05em;
-  margin-bottom: 2px;
-}
-
-.stat-item .val {
-  font-size: 13px;
-  font-weight: 600;
-  color: white;
-  font-family: var(--font-display);
-}
-
-/* ── Elevation / 3D Tabs ── */
-.elevation-profile-section {
-  padding: 14px 16px;
-  border-bottom: 1px solid var(--border-glass);
-}
-
-.profile-tabs-header {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  margin-bottom: 10px;
-}
-
-.profile-tab-buttons {
-  display: flex;
-  background: rgba(255,255,255,0.04);
-  padding: 3px;
-  border-radius: 7px;
-  border: 1px solid var(--border-glass);
-}
-
-.tab-btn {
-  background: transparent;
-  border: none;
-  color: var(--text-secondary);
-  font-family: var(--font-body);
-  font-size: 11px;
-  font-weight: 600;
-  padding: 5px 12px;
-  border-radius: 5px;
-  cursor: pointer;
-  transition: all var(--t-fast);
-}
-
-.tab-btn:hover { color: white; }
-
-.tab-btn.active {
-  background: rgba(16,185,129,0.15);
-  color: var(--color-primary);
-  border: 1px solid rgba(16,185,129,0.25);
-}
-
-.elevation-live-data {
-  font-size: 11px;
-  color: var(--color-primary);
-  font-family: var(--font-display);
-  font-weight: 500;
-  background: rgba(16,185,129,0.1);
-  padding: 2px 8px;
-  border-radius: 20px;
-  opacity: 0;
-  transition: opacity var(--t-fast);
-}
-
-.elevation-live-data.active { opacity: 1; }
-
-.chart-container {
-  width: 100%;
-  height: 110px;
-  position: relative;
-  background: rgba(255,255,255,0.01);
-  border-radius: 8px;
-  border: 1px dashed rgba(255,255,255,0.05);
-}
-
-.chart-svg { width: 100%; height: 100%; overflow: visible; }
-
-/* 3D Canvas */
-#canvas-container {
-  overflow: hidden;
-  background: radial-gradient(circle at center, rgba(16,185,129,0.05) 0%, rgba(8,10,13,0.5) 100%) !important;
-}
-
-#profile-3d-canvas { width: 100%; height: 100%; cursor: grab; }
-#profile-3d-canvas:active { cursor: grabbing; }
-
-.canvas-hint {
-  position: absolute;
-  bottom: 6px; right: 10px;
-  font-size: 10px;
-  color: var(--text-muted);
-  display: flex; align-items: center; gap: 4px;
-  pointer-events: none;
-  background: rgba(8,10,13,0.6);
-  padding: 2px 7px;
-  border-radius: 4px;
-}
-
-/* ── Description ── */
-.drawer-description {
-  padding: 14px 20px;
-  font-size: 13px;
-  line-height: 1.65;
-  color: var(--text-secondary);
+  display: none;
 }
 
 /* ── Action Buttons ── */
 .drawer-actions {
-  padding: 14px 16px 16px;
-  background: rgba(8,10,13,0.8);
-  border-top: 1px solid var(--border-glass);
-  position: sticky;
-  bottom: 0;
-  z-index: 5;
+  padding: 0;
+  background: transparent;
+  border: none;
 }
 
 .action-btn-row {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 10px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
 }
 
 .btn {
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 7px;
-  padding: 11px 12px;
-  border-radius: 9px;
+  gap: 10px;
+  padding: 16px 20px;
+  border-radius: 10px;
   text-decoration: none;
-  font-family: var(--font-body);
-  font-size: 12px;
-  font-weight: 600;
+  font-family: var(--font-display);
+  font-size: 15px;
+  font-weight: 700;
   cursor: pointer;
   transition: all var(--t-fast);
   border: none;
 }
 
+.btn i {
+  font-size: 18px;
+}
+
+.btn-pov {
+  background: linear-gradient(135deg, #ff0000, #c00000);
+  color: white;
+  box-shadow: 0 4px 16px rgba(255,0,0,0.3);
+}
+
+.btn-pov:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 24px rgba(255,0,0,0.5);
+  filter: brightness(1.15);
+}
+
 .btn-secondary {
-  background: rgba(255,255,255,0.06);
+  background: rgba(255,255,255,0.08);
   border: 1px solid var(--border-glass);
   color: white;
 }
 
 .btn-secondary:hover {
-  background: rgba(255,255,255,0.12);
-  border-color: rgba(255,255,255,0.15);
+  background: rgba(255,255,255,0.15);
+  border-color: rgba(255,255,255,0.2);
+  transform: translateY(-1px);
 }
 
 .btn-strava {
-  background: rgba(252,82,0,0.12);
-  border: 1px solid rgba(252,82,0,0.3);
-  color: #ff7530;
+  background: linear-gradient(135deg, #fc5200, #c94200);
+  color: white;
+  box-shadow: 0 4px 16px rgba(252,82,0,0.3);
 }
 
 .btn-strava:hover {
-  background: var(--color-strava);
-  color: white;
-  border-color: transparent;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 24px rgba(252,82,0,0.5);
+  filter: brightness(1.15);
 }
 
 /* ── Trail Difficulty Badges ── */
@@ -747,9 +590,12 @@ h1,h2,h3,h4,h5,h6 {
     border-radius: 20px 20px 0 0;
     max-height: 80vh;
     transform: translateY(100%);
+    padding: 20px;
   }
 
   #details-drawer.open { transform: translateY(0); }
 
-  .drawer-actions { position: sticky; bottom: 0; }
+  .drawer-header-content h2 {
+    font-size: 24px;
+  }
 }

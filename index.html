@@ -58,12 +58,17 @@
 
     <!-- Trail Detail Card (Slides in from right) -->
     <article id="details-drawer" class="glass-panel" aria-hidden="true" aria-label="Trail details">
-      
+
       <button id="close-drawer-btn" class="close-btn" aria-label="Close trail details">
         <i class="fas fa-times"></i>
       </button>
-      
+
       <div class="drawer-scroll-container">
+
+        <!-- Trail Name -->
+        <div class="drawer-header-content">
+          <h2 id="drawer-title">Trail Name</h2>
+        </div>
 
         <!-- AUTOPLAY YOUTUBE EMBED -->
         <div class="video-section">
@@ -77,80 +82,19 @@
               allowfullscreen>
             </iframe>
           </div>
-          <a id="btn-pov" href="#" target="_blank" rel="noopener noreferrer" class="btn btn-pov">
-            <i class="fas fa-video"></i> Watch My POV Video
-          </a>
         </div>
 
-        <!-- Trail Name & Meta -->
-        <div class="drawer-header-content">
-          <h2 id="drawer-title">Trail Name</h2>
-          <div class="drawer-subtitle-row">
-            <span id="drawer-region">Region</span>
-            <span>&bull;</span>
-            <span id="drawer-difficulty-badge" class="trail-badge">Difficulty</span>
-          </div>
-        </div>
-        
-        <!-- Stats Grid -->
-        <div class="drawer-stats-grid">
-          <div class="stat-item">
-            <i class="fas fa-route"></i>
-            <span class="label">Distance</span>
-            <span id="stat-dist" class="val">0 km</span>
-          </div>
-          <div class="stat-item">
-            <i class="fas fa-arrow-up"></i>
-            <span class="label">Ascent</span>
-            <span id="stat-gain" class="val">0 m</span>
-          </div>
-          <div class="stat-item">
-            <i class="fas fa-arrow-down"></i>
-            <span class="label">Descent</span>
-            <span id="stat-loss" class="val">0 m</span>
-          </div>
-          <div class="stat-item">
-            <i class="fas fa-mountain"></i>
-            <span class="label">Max Elev</span>
-            <span id="stat-max" class="val">0 m</span>
-          </div>
-          <div class="stat-item" style="grid-column: span 2">
-            <i class="fas fa-clock"></i>
-            <span class="label">Est. Duration</span>
-            <span id="stat-time" class="val">0m</span>
-          </div>
-        </div>
-        
-        <!-- Elevation Profile / 3D Orbit Tabs -->
-        <div class="elevation-profile-section">
-          <div class="profile-tabs-header">
-            <div class="profile-tab-buttons" role="tablist">
-              <button id="tab-2d" class="tab-btn active" role="tab" aria-selected="true">2D Profile</button>
-              <button id="tab-3d" class="tab-btn" role="tab" aria-selected="false">3D Orbit</button>
-            </div>
-            <span id="elevation-live-data" class="elevation-live-data"></span>
-          </div>
-          
-          <div class="chart-views-wrapper">
-            <div id="chart-container" class="chart-container tab-panel" role="tabpanel"></div>
-            <div id="canvas-container" class="chart-container tab-panel" role="tabpanel" style="display: none;">
-              <canvas id="profile-3d-canvas"></canvas>
-              <div class="canvas-hint"><i class="fas fa-rotate"></i> Drag to rotate</div>
-            </div>
-          </div>
-        </div>
-        
-        <!-- Description -->
-        <p id="drawer-desc" class="drawer-description"></p>
-        
-        <!-- Secondary Actions -->
+        <!-- Action Buttons -->
         <footer class="drawer-actions">
           <div class="action-btn-row">
-            <a id="btn-gpx" href="#" download class="btn btn-secondary">
-              <i class="fas fa-download"></i> Download GPX
+            <a id="btn-pov" href="#" target="_blank" rel="noopener noreferrer" class="btn btn-pov">
+              <i class="fas fa-video"></i> Watch Full POV
             </a>
             <a id="btn-strava" href="#" target="_blank" rel="noopener noreferrer" class="btn btn-strava">
-              <i class="fab fa-strava"></i> Strava Ride
+              <i class="fab fa-strava"></i> View on Strava
+            </a>
+            <a id="btn-gpx" href="#" download class="btn btn-secondary">
+              <i class="fas fa-download"></i> Download GPX
             </a>
           </div>
         </footer>
