@@ -9,7 +9,7 @@
       "stravaUrl": "https://www.strava.com/activities/15174364686",
       "previewVideoId": "7d6o8JkbPVM",
       "previewStart": 20,
-      "povVideoUrl": "http://www.youtube.com/watch?v=3KKrLFbCJOA",
+      "povVideoUrl": "https://youtu.be/3KKrLFbCJOA?si=mjWRmbGOy5-vDfJ6",
       "description": "The classic singletrack descent near Villeneuve-d'Entraunes. Features beautiful technical ridge lines, loose rocks, and sections carved into natural marl.",
       "gpxFile": "chamoussilon.gpx",
       "status": "UPDATE"
@@ -23,7 +23,7 @@
       "stravaUrl": "https://www.strava.com/activities/18983312508",
       "previewVideoId": "EzsJc4btP-U",
       "previewStart": 0,
-      "povVideoUrl": "http://www.youtube.com/watch?v=9o_NxQVsjII",
+      "povVideoUrl": "https://youtu.be/9o_NxQVsjII?si=boOBEPpValCwfFir",
       "description": "Legendary flowy lines carved straight into the steep grey clay marls. Drift-like tire traction, high-speed rollers, and unique natural halfpipes.",
       "gpxFile": "terres-grises.gpx",
       "status": "UPDATE"
@@ -37,7 +37,7 @@
       "stravaUrl": "https://www.strava.com/activities/18236216834",
       "previewVideoId": "dKyxLUTCIYg",
       "previewStart": 0,
-      "povVideoUrl": "https://youtu.be/pap2lfR1WLk",
+      "povVideoUrl": "https://youtu.be/pap2lfR1WLk?si=BsnJe8IblPht0GU9",
       "description": "An alpine singletrack ridge descending through red pelite rocks and larch forests. High exposure, steep stone switchbacks, and technical slab rolls.",
       "gpxFile": "Gordolasque.gpx",
       "status": "UPDATE"
@@ -51,8 +51,8 @@
       "stravaUrl": "https://www.strava.com/activities/15230248224",
       "previewVideoId": "1X5ZcEvjxAE",
       "previewStart": 0,
-      "povVideoUrl": "https://youtu.be/1X5ZcEvjxAE",
-      "description": "Technical descent through the unique black marls of Digne. Steep switchbacks and challenging terrain with spectacular geological features.",
+      "povVideoUrl": "",
+      "description": "Digne, spines and toboggans. Technical descent through the unique black marls of Digne.",
       "gpxFile": "trimmed_Dignes.gpx",
       "status": "NEW"
     },
@@ -65,8 +65,8 @@
       "stravaUrl": "https://www.strava.com/activities/18224672473",
       "previewVideoId": "_tMxzy2LDSo",
       "previewStart": 0,
-      "povVideoUrl": "https://youtu.be/_tMxzy2LDSo",
-      "description": "Fast and flowy descent through the Menton backcountry. Technical sections mixed with high-speed flow.",
+      "povVideoUrl": "https://www.youtube.com/watch?v=ZDoiIQY5r20",
+      "description": "Molini, too twisty for DJI neo. Fast and flowy descent through technical sections.",
       "gpxFile": "trimmed_Molini.gpx",
       "status": "NEW"
     },
@@ -79,8 +79,8 @@
       "stravaUrl": "https://www.strava.com/activities/10977613538",
       "previewVideoId": "o5BS5DW89CQ",
       "previewStart": 0,
-      "povVideoUrl": "https://youtu.be/o5BS5DW89CQ",
-      "description": "Technical singletrack descent with varied terrain and challenging rocky sections.",
+      "povVideoUrl": "https://www.youtube.com/watch?v=7lyWc0qN780",
+      "description": "The Canyon chute. Technical singletrack descent with varied terrain and challenging rocky sections.",
       "gpxFile": "trimmed_Escarene.gpx",
       "status": "NEW"
     },
@@ -93,8 +93,8 @@
       "stravaUrl": "https://www.strava.com/activities/16590983414",
       "previewVideoId": "EgnZmBut7m8",
       "previewStart": 37,
-      "povVideoUrl": "https://youtu.be/EgnZmBut7m8?si=yAilvZvFBylJF-zm&t=37",
-      "description": "Epic descent through red rock terrain. Exposed ridgeline with technical rocky sections and amazing views.",
+      "povVideoUrl": "https://youtu.be/iwfB3acxuds?si=G0ycAXDf1im7V3Ah",
+      "description": "Snow on Mars - Valberg DJI Neo 2. Epic descent through red rock terrain with exposed ridgeline.",
       "gpxFile": "trimmed_Puget_terres_rouges.gpx",
       "status": "NEW"
     },
@@ -107,8 +107,8 @@
       "stravaUrl": "https://www.strava.com/activities/19060351458",
       "previewVideoId": "qUsQtQMSYrs",
       "previewStart": 0,
-      "povVideoUrl": "https://youtu.be/qUsQtQMSYrs",
-      "description": "Classic Nice backcountry descent with technical sections and stunning coastal views.",
+      "povVideoUrl": "https://youtu.be/KHuMTNU9IDU?si=38eQXVKJOxze2I2Q",
+      "description": "Mont Viroulet. Classic backcountry descent with technical sections and stunning views.",
       "gpxFile": "trimmed_Viroulet.gpx",
       "status": "NEW"
     },
@@ -121,8 +121,8 @@
       "stravaUrl": "https://www.strava.com/activities/5795945127",
       "previewVideoId": "cm5BrL5XTts",
       "previewStart": 0,
-      "povVideoUrl": "https://youtu.be/cm5BrL5XTts",
-      "description": "High alpine singletrack with technical sections through varied mountain terrain.",
+      "povVideoUrl": "https://www.youtube.com/watch?v=uOXQZbAb_N0",
+      "description": "Roubion - Fields of Gold. High alpine singletrack with technical sections through varied mountain terrain.",
       "gpxFile": "trimmed_Roubion.gpx",
       "status": "NEW"
     }

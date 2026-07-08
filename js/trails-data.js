@@ -16,7 +16,7 @@ const trailsData = [
     "stravaUrl": "https://www.strava.com/activities/15174364686",
     "previewVideoId": "7d6o8JkbPVM",
     "previewStart": 20,
-    "povVideoUrl": "http://www.youtube.com/watch?v=3KKrLFbCJOA",
+    "povVideoUrl": "https://youtu.be/3KKrLFbCJOA?si=mjWRmbGOy5-vDfJ6",
     "waypoints": [
       [
         44.15871,
@@ -1730,7 +1730,7 @@ const trailsData = [
     "stravaUrl": "https://www.strava.com/activities/18983312508",
     "previewVideoId": "EzsJc4btP-U",
     "previewStart": 0,
-    "povVideoUrl": "http://www.youtube.com/watch?v=9o_NxQVsjII",
+    "povVideoUrl": "https://youtu.be/9o_NxQVsjII?si=boOBEPpValCwfFir",
     "waypoints": [
       [
         44.128991,
@@ -5844,7 +5844,7 @@ const trailsData = [
     "stravaUrl": "https://www.strava.com/activities/18236216834",
     "previewVideoId": "dKyxLUTCIYg",
     "previewStart": 0,
-    "povVideoUrl": "https://youtu.be/pap2lfR1WLk",
+    "povVideoUrl": "https://youtu.be/pap2lfR1WLk?si=BsnJe8IblPht0GU9",
     "waypoints": [
       [
         44.036694,
@@ -13608,7 +13608,7 @@ const trailsData = [
     "stravaUrl": "https://www.strava.com/activities/15230248224",
     "previewVideoId": "1X5ZcEvjxAE",
     "previewStart": 0,
-    "povVideoUrl": "https://youtu.be/1X5ZcEvjxAE",
+    "povVideoUrl": "",
     "waypoints": [
       [
         44.105507,
@@ -13631,7 +13631,7 @@ const trailsData = [
         1030
       ]
     ],
-    "description": "Technical descent through the unique black marls of Digne. Steep switchbacks and challenging terrain with spectacular geological features.",
+    "description": "Digne, spines and toboggans. Technical descent through the unique black marls of Digne.",
     "path": [
       {
         "lat": 44.105507,
@@ -16882,7 +16882,7 @@ const trailsData = [
     "stravaUrl": "https://www.strava.com/activities/18224672473",
     "previewVideoId": "_tMxzy2LDSo",
     "previewStart": 0,
-    "povVideoUrl": "https://youtu.be/_tMxzy2LDSo",
+    "povVideoUrl": "https://www.youtube.com/watch?v=ZDoiIQY5r20",
     "waypoints": [
       [
         43.963956,
@@ -16905,7 +16905,7 @@ const trailsData = [
         486
       ]
     ],
-    "description": "Fast and flowy descent through the Menton backcountry. Technical sections mixed with high-speed flow.",
+    "description": "Molini, too twisty for DJI neo. Fast and flowy descent through technical sections.",
     "path": [
       {
         "lat": 43.963956,
@@ -23376,7 +23376,7 @@ const trailsData = [
     "stravaUrl": "https://www.strava.com/activities/10977613538",
     "previewVideoId": "o5BS5DW89CQ",
     "previewStart": 0,
-    "povVideoUrl": "https://youtu.be/o5BS5DW89CQ",
+    "povVideoUrl": "https://www.youtube.com/watch?v=7lyWc0qN780",
     "waypoints": [
       [
         43.836464,
@@ -23399,7 +23399,7 @@ const trailsData = [
         499
       ]
     ],
-    "description": "Technical singletrack descent with varied terrain and challenging rocky sections.",
+    "description": "The Canyon chute. Technical singletrack descent with varied terrain and challenging rocky sections.",
     "path": [
       {
         "lat": 43.836464,
@@ -26350,7 +26350,7 @@ const trailsData = [
     "stravaUrl": "https://www.strava.com/activities/16590983414",
     "previewVideoId": "EgnZmBut7m8",
     "previewStart": 37,
-    "povVideoUrl": "https://youtu.be/EgnZmBut7m8?si=yAilvZvFBylJF-zm&t=37",
+    "povVideoUrl": "https://youtu.be/iwfB3acxuds?si=G0ycAXDf1im7V3Ah",
     "waypoints": [
       [
         44.031965,
@@ -26373,7 +26373,7 @@ const trailsData = [
         1593
       ]
     ],
-    "description": "Epic descent through red rock terrain. Exposed ridgeline with technical rocky sections and amazing views.",
+    "description": "Snow on Mars - Valberg DJI Neo 2. Epic descent through red rock terrain with exposed ridgeline.",
     "path": [
       {
         "lat": 44.031965,
@@ -30494,7 +30494,7 @@ const trailsData = [
     "stravaUrl": "https://www.strava.com/activities/19060351458",
     "previewVideoId": "qUsQtQMSYrs",
     "previewStart": 0,
-    "povVideoUrl": "https://youtu.be/qUsQtQMSYrs",
+    "povVideoUrl": "https://youtu.be/KHuMTNU9IDU?si=38eQXVKJOxze2I2Q",
     "waypoints": [
       [
         44.04926,
@@ -30517,7 +30517,7 @@ const trailsData = [
         1144
       ]
     ],
-    "description": "Classic Nice backcountry descent with technical sections and stunning coastal views.",
+    "description": "Mont Viroulet. Classic backcountry descent with technical sections and stunning views.",
     "path": [
       {
         "lat": 44.04926,
@@ -40528,7 +40528,7 @@ const trailsData = [
     "stravaUrl": "https://www.strava.com/activities/5795945127",
     "previewVideoId": "cm5BrL5XTts",
     "previewStart": 0,
-    "povVideoUrl": "https://youtu.be/cm5BrL5XTts",
+    "povVideoUrl": "https://www.youtube.com/watch?v=uOXQZbAb_N0",
     "waypoints": [
       [
         44.025567,
@@ -40551,7 +40551,7 @@ const trailsData = [
         1327
       ]
     ],
-    "description": "High alpine singletrack with technical sections through varied mountain terrain.",
+    "description": "Roubion - Fields of Gold. High alpine singletrack with technical sections through varied mountain terrain.",
     "path": [
       {
         "lat": 44.025567,
