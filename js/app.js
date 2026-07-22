@@ -296,7 +296,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // ── Links ──
     document.getElementById('btn-gpx').href = trail.gpxPath;
-    document.getElementById('btn-strava').href = trail.stravaUrl || 'https://www.strava.com/athletes/6837889';
+    document.getElementById('btn-strava').href = trail.stravaUrl || 'https://www.strava.com/athletes/1872828';
 
     // ── Elevation chart ──
     renderElevationSVG(trail);
